@@ -11,7 +11,20 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val subjects: List<String> = listOf("iOS", "Android", "React Native", "Flutter")
-        listView.adapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, subjects)
+        val food: ArrayList<Menu> = ArrayList()
+        food.add(Menu("Phở", R.drawable.ic_launcher_foreground))
+        food.add(Menu("Bún", R.drawable.ic_launcher_foreground))
+        food.add(Menu("Mỳ tôm", R.drawable.ic_launcher_foreground))
+        food.add(Menu("Cơm", R.drawable.ic_launcher_foreground))
+        food.add(Menu("Phở", R.drawable.ic_launcher_foreground))
+        food.add(Menu("Bún", R.drawable.ic_launcher_foreground))
+        food.add(Menu("Mỳ tôm", R.drawable.ic_launcher_foreground))
+        food.add(Menu("Cơm", R.drawable.ic_launcher_foreground))
+        food.add(Menu("Phở", R.drawable.ic_launcher_foreground))
+        food.add(Menu("Bún", R.drawable.ic_launcher_foreground))
+        food.add(Menu("Mỳ tôm", R.drawable.ic_launcher_foreground))
+        food.add(Menu("Cơm", R.drawable.ic_launcher_foreground))
+
+        listView.adapter = CustomAdapter(this@MainActivity, food)
     }
 }
