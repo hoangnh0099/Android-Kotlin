@@ -9,5 +9,9 @@
 
     <string name="hello_first_fragment">Hello first fragment</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <string name="emailInput">Email</string>
+    <string name="passwordInput">Password</string>
     <string name="login">Login</string>
+    <string name="register">register</string>
+    <string name="todo_app">Todo App</string>
 </resources>
