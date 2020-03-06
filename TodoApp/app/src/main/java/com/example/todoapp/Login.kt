@@ -10,29 +10,30 @@ import kotlinx.android.synthetic.main.activity_login.*
 
 class Login : AppCompatActivity() {
 
-    val auth = FirebaseAuth.getInstance()
+    private val auth = FirebaseAuth.getInstance()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 
         loginButton.setOnClickListener {
-            val email: String = emailInput.text.toString()
+            val email: String = emailInput.text.toString().trim()
             val password: String = passwordInput.text.toString().trim()
 
-            if (email != null && password != null) {
-                auth.signInWithEmailAndPassword(email, password).addOnCompleteListener { task ->
-                    if (task.isSuccessful) {
-                        val user = auth.currentUser
-                        val intent: Intent = Intent(this@Login, MainActivity::class.java)
-                        startActivity(intent)
-                    } else {
-                        Toast.makeText(this@Login, "Login Failed! - ${task.exception}", Toast.LENGTH_SHORT).show()
-                    }
+            auth.signInWithEmailAndPassword(email, password).addOnCompleteListener { task ->
+                if (task.isSuccessful) {
+                    val user = auth.currentUser
+                    val intent: Intent = Intent(this@Login, TodoList::class.java)
+                    startActivity(intent)
+                } else {
+                    Toast.makeText(this@Login, "Login Failed! - ${task.exception}", Toast.LENGTH_SHORT).show()
                 }
-            } else {
-                Toast.makeText(this@Login, "Email or password is empty", Toast.LENGTH_SHORT).show()
             }
+        }
+
+        registerButton.setOnClickListener {
+            val intent: Intent = Intent(this@Login, Register::class.java)
+            startActivity(intent)
         }
     }
 }
