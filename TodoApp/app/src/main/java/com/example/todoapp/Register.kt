@@ -19,15 +19,19 @@ class Register : AppCompatActivity() {
             val email: String = emailInput.text.toString().trim()
             val password: String = passwordInput.text.toString().trim()
 
-            auth.createUserWithEmailAndPassword(email, password).addOnCompleteListener { task ->
-                if (task.isSuccessful) {
-                    val user = auth.currentUser
-                    Toast.makeText(this@Register, "Register successful!", Toast.LENGTH_SHORT).show()
-                    val intent: Intent = Intent(this@Register, Login::class.java)
-                    startActivity(intent)
-                } else {
-                    Toast.makeText(this@Register, "Register failed! ${task.exception}", Toast.LENGTH_SHORT).show()
+            if (email.isNotEmpty() && password.isNotEmpty()) {
+                auth.createUserWithEmailAndPassword(email, password).addOnCompleteListener { task ->
+                    if (task.isSuccessful) {
+                        val user = auth.currentUser
+                        Toast.makeText(this@Register, "Register successful!", Toast.LENGTH_SHORT).show()
+                        val intent: Intent = Intent(this@Register, Login::class.java)
+                        startActivity(intent)
+                    } else {
+                        Toast.makeText(this@Register, "Register failed! ${task.exception}", Toast.LENGTH_SHORT).show()
+                    }
                 }
+            } else {
+                Toast.makeText(this, "Email or passwor is not empty", Toast.LENGTH_SHORT).show()
             }
         }
     }

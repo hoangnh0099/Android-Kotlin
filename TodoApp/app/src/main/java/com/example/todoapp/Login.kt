@@ -16,23 +16,35 @@ class Login : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 
+        // Login
         loginButton.setOnClickListener {
             val email: String = emailInput.text.toString().trim()
             val password: String = passwordInput.text.toString().trim()
 
-            auth.signInWithEmailAndPassword(email, password).addOnCompleteListener { task ->
-                if (task.isSuccessful) {
-                    val user = auth.currentUser
-                    val intent: Intent = Intent(this@Login, TodoList::class.java)
-                    startActivity(intent)
-                } else {
-                    Toast.makeText(this@Login, "Login Failed! - ${task.exception}", Toast.LENGTH_SHORT).show()
+            if (email.isNotEmpty() && password.isNotEmpty()) {
+                auth.signInWithEmailAndPassword(email, password).addOnCompleteListener { task ->
+                    if (task.isSuccessful) {
+                        val user = auth.currentUser
+                        val intent: Intent = Intent(this@Login, TodoList::class.java)
+                        startActivity(intent)
+                    } else {
+                        Toast.makeText(this@Login, "Login Failed! - ${task.exception}", Toast.LENGTH_SHORT).show()
+                    }
                 }
+            } else {
+                Toast.makeText(this, "Email or passwor is not empty", Toast.LENGTH_SHORT).show()
             }
         }
 
+        // Register
         registerButton.setOnClickListener {
             val intent: Intent = Intent(this@Login, Register::class.java)
+            startActivity(intent)
+        }
+
+        // Forgot Password
+        forgotPasswordButton.setOnClickListener {
+            val intent: Intent = Intent(this@Login, ForgotPassword::class.java)
             startActivity(intent)
         }
     }

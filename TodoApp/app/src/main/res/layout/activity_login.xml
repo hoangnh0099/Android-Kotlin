@@ -45,4 +45,13 @@
             android:layout_height="wrap_content" />
     </LinearLayout>
 
+    <Button
+        android:textAllCaps="false"
+        android:id="@+id/forgotPasswordButton"
+        android:background="@android:color/transparent"
+        android:layout_gravity="center"
+        android:text="@string/forgot_password"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
 </LinearLayout>

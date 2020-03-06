@@ -14,4 +14,9 @@
     <string name="login">Login</string>
     <string name="register">register</string>
     <string name="todo_app">Todo App</string>
+    <string name="add">Add</string>
+    <string name="what_do_you_want_to_note">What do you want to note ?</string>
+    <string name="log_out">Log Out</string>
+    <string name="forgot_password">Forgot password ?</string>
+    <string name="send_new_password">Send new password</string>
 </resources>

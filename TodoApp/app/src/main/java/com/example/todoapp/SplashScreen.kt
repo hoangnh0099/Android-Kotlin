@@ -27,7 +27,5 @@ class SplashScreen : AppCompatActivity() {
             val intent: Intent = Intent(this@SplashScreen, Login::class.java)
             startActivity(intent)
         }
-
-        Log.d("currentUser", currentUser.toString())
     }
 }
