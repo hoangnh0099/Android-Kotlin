@@ -31,7 +31,7 @@ class Register : AppCompatActivity() {
                     }
                 }
             } else {
-                Toast.makeText(this, "Email or passwor is not empty", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Email or password is not empty", Toast.LENGTH_SHORT).show()
             }
         }
     }

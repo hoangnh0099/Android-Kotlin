@@ -17,14 +17,18 @@ class ForgotPassword : AppCompatActivity() {
         sendNewPasswordButton.setOnClickListener {
             val email: String = emailInput.text.toString()
 
-            auth.sendPasswordResetEmail(email).addOnCompleteListener { task ->
-                if (task.isSuccessful) {
-                    Toast.makeText(this, "Send successful!", Toast.LENGTH_SHORT).show()
-                    val intent: Intent = Intent(this@ForgotPassword, Login::class.java)
-                    startActivity(intent)
-                } else {
-                    Toast.makeText(this, "Send failed! ${task.exception}", Toast.LENGTH_SHORT).show()
+            if (email.isNotEmpty()) {
+                auth.sendPasswordResetEmail(email).addOnCompleteListener { task ->
+                    if (task.isSuccessful) {
+                        Toast.makeText(this, "Send successful!", Toast.LENGTH_SHORT).show()
+                        val intent: Intent = Intent(this@ForgotPassword, Login::class.java)
+                        startActivity(intent)
+                    } else {
+                        Toast.makeText(this, "Send failed! ${task.exception}", Toast.LENGTH_SHORT).show()
+                    }
                 }
+            } else {
+                Toast.makeText(this, "Email is not empty", Toast.LENGTH_SHORT).show()
             }
         }
     }
